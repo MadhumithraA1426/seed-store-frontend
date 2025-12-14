@@ -34,6 +34,7 @@ const Contact = () => {
       <h1>Contact us</h1>
 
       <div className="contact-content">
+        {/* LEFT: form card */}
         <form onSubmit={handleSubmit} className="contact-form">
           {submitted && (
             <div className="success-message">Message sent successfully!</div>
@@ -71,6 +72,7 @@ const Contact = () => {
           <button type="submit">Send</button>
         </form>
 
+        {/* RIGHT: info block using .contact-details + .contact-item */}
         <div className="contact-details">
           <h2>Get in touch</h2>
           <p>
