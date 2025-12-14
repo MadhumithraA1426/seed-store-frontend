@@ -31,13 +31,14 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      // call backend login
+      // backend should return { user, token }
       const { data } = await api.post("/auth/login", {
         email: formData.email,
         password: formData.password
       });
 
-      // save user in context/localStorage
+      // save both user and token via AuthContext login
+      // login expects the full data object: { user, token }
       login(data);
 
       navigate("/");
