@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-page">
+    <div className="home">
       <section className="hero">
         <div className="hero-content">
           <h1>Your trusted source for premium plant seeds</h1>
@@ -58,7 +58,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="features">
+      <section className="features-section">
         <h2>Why Seed Store?</h2>
         <div className="features-grid">
           <div className="feature-card">
@@ -80,10 +80,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="recommendation-section">
+      <section className="recommendations-section">
         <h2>Get personalized seed recommendations</h2>
         {showForm && (
-          <form className="preferences-form" onSubmit={handleSubmit}>
+          <form className="recommendation-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Soil type</label>
               <select
