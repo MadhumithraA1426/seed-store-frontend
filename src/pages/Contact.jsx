@@ -40,36 +40,47 @@ const Contact = () => {
             <div className="success-message">Message sent successfully!</div>
           )}
 
-          <input
-            name="name"
-            placeholder="Your name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-          />
-          <textarea
-            name="message"
-            rows="4"
-            placeholder="Your message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Send</button>
+          <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Subject</label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="5"
+                required
+              ></textarea>
+            </div>
+          <button type="submit" className="btn-primary">Send</button>
         </form>
 
         {/* RIGHT: info block using .contact-details + .contact-item */}
@@ -101,3 +112,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
