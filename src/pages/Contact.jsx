@@ -32,47 +32,67 @@ const Contact = () => {
   return (
     <div className="page-container contact-page">
       <h1>Contact us</h1>
-      <p>Have questions about our seeds or need gardening advice? We're here to help!</p>
 
-      {submitted && <div className="success-message">Message sent successfully!</div>}
+      <div className="contact-content">
+        <form onSubmit={handleSubmit} className="contact-form">
+          {submitted && (
+            <div className="success-message">Message sent successfully!</div>
+          )}
 
-      <form onSubmit={handleSubmit} className="contact-form">
-        <input
-          name="name"
-          placeholder="Your name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email address"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="subject"
-          placeholder="Subject"
-          value={formData.subject}
-          onChange={handleChange}
-        />
-        <textarea
-          name="message"
-          rows="4"
-          placeholder="Your message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Send</button>
-      </form>
+          <input
+            name="name"
+            placeholder="Your name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="subject"
+            placeholder="Subject"
+            value={formData.subject}
+            onChange={handleChange}
+          />
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="Your message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
 
-      <div className="contact-info">
-        <p>support@seedstore.com</p>
-        <p>+1 (555) 123‑4567</p>
-        <p>123 Garden Street, Green City, GC 12345</p>
+        <div className="contact-details">
+          <h2>Get in touch</h2>
+          <p>
+            Have questions about our seeds or need gardening advice? We're here
+            to help!
+          </p>
+
+          <div className="contact-item">
+            <strong>Email</strong>
+            <p>support@seedstore.com</p>
+          </div>
+
+          <div className="contact-item">
+            <strong>Phone</strong>
+            <p>+1 (555) 123-4567</p>
+          </div>
+
+          <div className="contact-item">
+            <strong>Address</strong>
+            <p>123 Garden Street, Green City, GC 12345</p>
+          </div>
+        </div>
       </div>
     </div>
   );
