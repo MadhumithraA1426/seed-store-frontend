@@ -1,13 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext.jsx';
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext.jsx";
+import api from "../api.js";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -20,20 +21,28 @@ const Login = () => {
 
   const handleAdminLogin = () => {
     setFormData({
-      email: 'admin@example.com',
-      password: ''
+      email: "admin@example.com",
+      password: ""
     });
-    setError('');
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     try {
-      await login(formData.email, formData.password);
-      navigate('/');
+      // call backend login
+      const { data } = await api.post("/auth/login", {
+        email: formData.email,
+        password: formData.password
+      });
+
+      // save user in context/localStorage
+      login(data);
+
+      navigate("/");
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -63,13 +72,31 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn-primary">Login</button>
+          <button type="submit" className="btn-primary">
+            Login
+          </button>
         </form>
         <p className="auth-link">
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
         <p className="auth-link">
-          Admin? <button type="button" onClick={handleAdminLogin} className="admin-link-btn" style={{ background: 'none', border: 'none', color: 'inherit', textDecoration: 'underline', cursor: 'pointer', padding: 0, font: 'inherit' }}>Click here to auto-fill admin email</button>
+          Admin?{" "}
+          <button
+            type="button"
+            onClick={handleAdminLogin}
+            className="admin-link-btn"
+            style={{
+              background: "none",
+              border: "none",
+              color: "inherit",
+              textDecoration: "underline",
+              cursor: "pointer",
+              padding: 0,
+              font: "inherit"
+            }}
+          >
+            Click here to auto-fill admin email
+          </button>
         </p>
       </div>
     </div>
@@ -77,4 +104,3 @@ const Login = () => {
 };
 
 export default Login;
-
